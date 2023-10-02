@@ -21,4 +21,5 @@ jobs:
         run: |
           echo "현재 디렉토리: $(pwd)"
           echo "프로젝트 디렉토리: ${GITHUB_WORKSPACE}"
+          echo "프로젝트 디렉토리 내부 파일: $(ls ${GITHUB_WORKSPACE})"
           echo "스크립트 디렉토리 내부 파일: $(ls ${GITHUB_WORKSPACE}/scripts)"
