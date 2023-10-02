@@ -32,5 +32,4 @@ jobs:
       # - name: failure test
       #   run: sh ${GITHUB_WORKSPACE}/scripts/failure.sh
       - name: project test
-        run: |
-        xcodebuild clean test -project Github-Actions-Practice/Github-Actions-Practice.xcodeproj -scheme Github-Actions-Practice -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.4'
+        run: xcodebuild clean test -project Github-Actions-Practice/Github-Actions-Practice.xcodeproj -scheme Github-Actions-Practice -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.4'
