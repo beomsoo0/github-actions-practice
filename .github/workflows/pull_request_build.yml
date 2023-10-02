@@ -19,5 +19,9 @@ jobs:
       - name: success test
         # 성공 스크립트 실행
         run: |
+          pwd
+          ls
           ls ${GITHUB_WORKSPACE}/scripts/
+          ls ./github
+          ls ./scripts
           sh ${GITHUB_WORKSPACE}/scripts/success.sh
