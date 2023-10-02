@@ -35,8 +35,8 @@ jobs:
         run: |
           echo "xcodebuild test"                
           xcodebuild  \
-            -project Github-Actions-Practice.xcodeproj \
-            -scheme Github-Actions-Practice \
-              -sdk iphonesimulator \
-              -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
-              clean test
+          -project ${GITHUB_WORKSPACE}/Github-Actions-Practice/Github-Actions-Practice.xcodeproj \
+          -scheme Github-Actions-Practice \
+          -sdk iphonesimulator \
+          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
+          clean test
