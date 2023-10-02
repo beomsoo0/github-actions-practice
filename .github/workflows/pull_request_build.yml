@@ -17,7 +17,7 @@ jobs:
     # step은 job의 일부로 실행될 일련의 task들을 나타냄
     steps:
       # uses 키워드를 통해 Github Actions에서 기본으로 제공하는 액션을 사용 가능. 아래 액션은 repository 에 체크아웃하는 것
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       # 경로 디버그 step
       - name: check path
         run: |
@@ -39,4 +39,5 @@ jobs:
           -scheme Github-Actions-Practice \
           -sdk iphonesimulator \
           -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
-          clean test
+          clean test | xcpretty -c
+        timeout-minutes: 30
