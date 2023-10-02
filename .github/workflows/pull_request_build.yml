@@ -18,10 +18,12 @@ jobs:
     steps:
       # uses 키워드를 통해 Github Actions에서 기본으로 제공하는 액션을 사용 가능. 아래 액션은 repository 에 체크아웃하는 것
       - uses: actions/checkout@v2
-      # 성공 스크립트 실행
-      - name: success test
-        run: |
+      # 경로 디버그 step
+      - name: check path
           echo "현재 디렉토리: $(pwd)"
           echo "프로젝트 디렉토리: ${GITHUB_WORKSPACE}"
           echo "프로젝트 디렉토리 내부 파일: $(ls ${GITHUB_WORKSPACE})"
           echo "스크립트 디렉토리 내부 파일: $(ls ${GITHUB_WORKSPACE}/scripts)"
+      # 성공 스크립트 실행
+      - name: success test
+        run: sh ${GITHUB_WORKSPACE}/scripts/success.sh
