@@ -28,3 +28,6 @@ jobs:
       # 성공 스크립트 실행
       - name: success test
         run: sh ${GITHUB_WORKSPACE}/scripts/success.sh
+      # 실패 스크립트 실행
+      - name: failure test
+        run: sh ${GITHUB_WORKSPACE}/scripts/failure.sh
