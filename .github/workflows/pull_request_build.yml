@@ -49,6 +49,8 @@ jobs:
           echo "job2 - step2 -> exit 65"
           exit 1
 
+
+
     # # job이 실행될 환경 - 최신 mac os
     # runs-on: macos-latest
     # # step은 job의 일부로 실행될 일련의 task들을 나타냄
