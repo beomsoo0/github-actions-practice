@@ -7,37 +7,75 @@ on:
   pull_request_target:
     types: [opened, reopened, synchronize, closed]
 
+runs-on: macos-latest
 
 # work flow를 구성하는 job 목록
 jobs:
-  # work flow를 구성하는 'set-up' job
-  set-up:
-    # job이 실행될 환경 - 최신 mac os
-    runs-on: macos-latest
-    # step은 job의 일부로 실행될 일련의 task들을 나타냄
-    steps:
-      # uses 키워드를 통해 Github Actions에서 기본으로 제공하는 액션을 사용 가능. 아래 액션은 repository 에 체크아웃하는 것
-      - uses: actions/checkout@v3
-      # 경로 디버그 step
-      - name: check path
+  job1:
+     steps:
+      - name: job1 - step1
         run: |
-          echo "현재 디렉토리: $(pwd)"
-          echo "프로젝트 디렉토리: ${GITHUB_WORKSPACE}"
-          echo "프로젝트 디렉토리 내부 파일: $(ls ${GITHUB_WORKSPACE})"
-          echo "스크립트 디렉토리 내부 파일: $(ls ${GITHUB_WORKSPACE}/scripts)"
-      # # 성공 스크립트 실행
-      # - name: success test
-      #   run: sh ${GITHUB_WORKSPACE}/scripts/success.sh
-      # # 실패 스크립트 실행
-      # - name: failure test
-      #   run: sh ${GITHUB_WORKSPACE}/scripts/failure.sh
-      - name: project test
+          echo "job1 - step1 -> exit 1"
+          exit 1
+      - name: job1 - step2
+        if: failure()
         run: |
-          echo "xcodebuild test"                
-          xcodebuild  \
-          -project ${GITHUB_WORKSPACE}/Github-Actions-Practice/Github-Actions-Practice.xcodeproj \
-          -scheme Github-Actions-Practice \
-          -sdk iphonesimulator \
-          -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
-          clean test | xcpretty -c
-        timeout-minutes: 30
+          echo "job1 - step2 -> exit 1"
+          exit 1
+  job2:
+    if: failure()
+     steps:
+      - name: job2 - step1
+        if: failure()
+        run: |
+          echo "job2 - step1 -> exit 1"
+          exit 1
+      - name: job2 - step2
+        if: failure()
+        run: |
+          echo "job2 - step2 -> exit 1"
+          exit 1
+  job3:
+    if: failure()
+     steps:
+      - name: job3 - step1
+        if: failure()
+        run: |
+          echo "job3 - step1 -> exit 65"
+          exit 1
+      - name: job3 - step2
+        if: failure()
+        run: |
+          echo "job2 - step2 -> exit 65"
+          exit 1
+
+    # # job이 실행될 환경 - 최신 mac os
+    # runs-on: macos-latest
+    # # step은 job의 일부로 실행될 일련의 task들을 나타냄
+    # steps:
+    #   # uses 키워드를 통해 Github Actions에서 기본으로 제공하는 액션을 사용 가능. 아래 액션은 repository 에 체크아웃하는 것
+    #   - uses: actions/checkout@v3
+    #   # 경로 디버그 step
+    #   - name: check path
+    #     run: |
+    #       echo "현재 디렉토리: $(pwd)"
+    #       echo "프로젝트 디렉토리: ${GITHUB_WORKSPACE}"
+    #       echo "프로젝트 디렉토리 내부 파일: $(ls ${GITHUB_WORKSPACE})"
+    #       echo "스크립트 디렉토리 내부 파일: $(ls ${GITHUB_WORKSPACE}/scripts)"
+    #   # # 성공 스크립트 실행
+    #   # - name: success test
+    #   #   run: sh ${GITHUB_WORKSPACE}/scripts/success.sh
+    #   # # 실패 스크립트 실행
+    #   # - name: failure test
+    #   #   run: sh ${GITHUB_WORKSPACE}/scripts/failure.sh
+    #   - name: project test
+    #     run: |
+    #       echo "xcodebuild test"                
+    #       xcodebuild  \
+    #       -project ${GITHUB_WORKSPACE}/Github-Actions-Practice/Github-Actions-Practice.xcodeproj \
+    #       -scheme Github-Actions-Practice \
+    #       -sdk iphonesimulator \
+    #       -destination 'platform=iOS Simulator,name=iPhone 14,OS=16.2' \
+    #       clean test | xcpretty -c
+    #     timeout-minutes: 30
+    
