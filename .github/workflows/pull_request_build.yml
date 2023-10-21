@@ -1,12 +1,9 @@
 # work flow 의 이름
 name: pull-request_build
-
 on: 
   pull_request_target:
     types: [opened, reopened, synchronize, closed]
-
 runs-on: self-hosted
-
 jobs:
   job1:
     steps:
