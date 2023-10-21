@@ -18,7 +18,7 @@ jobs:
           echo "job1 - step1 -> exit 1"
           exit 1
       - name: job1 - step2
-        if: failure()
+        # if: failure()
         run: |
           echo "job1 - step2 -> exit 1"
           exit 1
@@ -26,25 +26,24 @@ jobs:
     if: failure()
      steps:
       - name: job2 - step1
-        if: failure()
+        # if: failure()
         run: |
           echo "job2 - step1 -> exit 1"
           exit 1
       - name: job2 - step2
-        if: failure()
+        # if: failure()
         run: |
           echo "job2 - step2 -> exit 1"
           exit 1
   job3:
-    if: failure()
      steps:
       - name: job3 - step1
-        if: failure()
+        # if: failure()
         run: |
           echo "job3 - step1 -> exit 65"
           exit 1
       - name: job3 - step2
-        if: failure()
+        # if: failure()
         run: |
           echo "job2 - step2 -> exit 65"
           exit 1
