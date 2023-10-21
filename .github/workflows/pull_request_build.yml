@@ -6,7 +6,6 @@ on:
 
 jobs:
   job1:
-    runs-on: self-hosted
     steps:
       - name: job1 - step1
         run: |
@@ -17,7 +16,6 @@ jobs:
           echo "job1 - step2 -> exit 1"
           exit 1
   job2:
-    runs-on: self-hosted
     if: failure()
     steps:
       - name: job2 - step1
@@ -29,7 +27,6 @@ jobs:
           echo "job2 - step2 -> exit 1"
           exit 1
   job3:
-    runs-on: self-hosted
     steps:
       - name: job3 - step1
         run: |
