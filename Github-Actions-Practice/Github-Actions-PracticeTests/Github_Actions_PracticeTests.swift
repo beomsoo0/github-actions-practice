@@ -26,7 +26,9 @@ final class Github_Actions_PracticeTests: XCTestCase {
         // Mark your test async to allow awaiting for asynchronous code to complete. Check the results with assertions afterwards.
     }
     
-    func test_success() throws {}
+    func test_success() throws {
+        print("success")
+    }
 
     func testPerformanceExample() throws {
         // This is an example of a performance test case.
