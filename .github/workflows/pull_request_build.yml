@@ -6,7 +6,7 @@ on:
 
 jobs:
   job1:
-    runs-on: [Linux]
+    runs-on: ubuntu-latest
     steps:
       - name: job1 - step1
         run: |
@@ -17,7 +17,7 @@ jobs:
           echo "job1 - step2 -> exit 1"
           exit 1
   job2:
-    runs-on: [Linux]
+    runs-on: ubuntu-latest
     if: failure()
     steps:
       - name: job2 - step1
@@ -29,7 +29,7 @@ jobs:
           echo "job2 - step2 -> exit 1"
           exit 1
   job3:
-    runs-on: [Linux]
+    runs-on: ubuntu-latest
     steps:
       - name: job3 - step1
         run: |
